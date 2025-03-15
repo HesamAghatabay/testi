@@ -1,10 +1,7 @@
 <template>
   <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-vertical.svg"
-      style="width: 200px; height: 200px"
-    >
+    <h1 class="text-h3">welcome to index page</h1>
+    <q-btn label="Register" to="/register" color="blue-9" />
   </q-page>
 </template>
 
