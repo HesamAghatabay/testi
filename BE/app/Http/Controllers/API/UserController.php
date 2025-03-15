@@ -30,6 +30,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        if (User::where("email", $request->email)->exists()) {
+            return response()->json([
+                "error"=> "user alredy exixt",
+            ]);
+            }
         $user = User::create([
             "name" => $request->name,
             "email" => $request->email,
@@ -40,7 +45,6 @@ class UserController extends Controller
             "message"=> "user register",
         ],201);
     }
-
     /**
      * Display the specified resource.
      */
