@@ -3,7 +3,9 @@
     <h1 class="text-h4">profile page</h1>
     <q-inner-loading v-if="!me" color="red-6" size="45px"/>
     <div v-if="me">
-      <p>{{ me.profile.full_name }}</p>
+      <p>{{ me.profile.name }}</p>
+      <p>{{ me.profile.address }}</p>
+      <p>{{ me.profile.phone_number }}</p>
     </div>
   </q-page>
 </template>
