@@ -1,7 +1,7 @@
 <template>
   <q-page padding>
     <h1 class="text-h4">profile page</h1>
-    <q-inner-loading v-if="!me" color="red-6" />
+    <q-inner-loading v-if="!me" color="red-6" size="45px"/>
     <div v-if="me">
       <p>{{ me.profile.full_name }}</p>
     </div>

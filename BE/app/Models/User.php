@@ -11,10 +11,11 @@ use Laravel\Passport\HasApiTokens;
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable , HasApiTokens;
- public function profile(){
-    return $this->hasOne(Profile::class,"user_id","id");
- }
+    use HasFactory, Notifiable, HasApiTokens;
+    public function profile()
+    {
+        return $this->hasOne(Profile::class, "user_id", "id");
+    }
     /**
      * The attributes that are mass assignable.
      *
@@ -25,7 +26,7 @@ class User extends Authenticatable
         'email',
         'password',
     ];
-
+    protected $with = ['profile'];
     /**
      * The attributes that should be hidden for serialization.
      *
