@@ -31,6 +31,7 @@ function createpost() {
     })
     .then((r) => {
       Notify.create({
+        type: 'positive',
         message: r.data.message,
       })
       router.push('/posts')
@@ -38,6 +39,7 @@ function createpost() {
     .catch((e) => {
       console.error(e.response)
       Notify.create({
+        type: 'negative',
         message: e,
       })
     })

@@ -12,6 +12,7 @@
 </template>
 
 <script setup>
+import { Notify } from 'quasar'
 import { api } from 'src/boot/axios'
 import { onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
@@ -53,12 +54,16 @@ function editpost() {
 
   api
     .put(`/api/post/${postId}`, updatedPost)
-    .then(() => {
-      console.log('Post updated successfully')
-      router.push('/all-posts');
+    .then((r) => {
+      console.log(r)
+      Notify.create({
+        type: 'positive',
+        message: 'post edit',
+      })
+      router.push('/posts')
     })
-    .catch((error) => {
-      console.error('Error updating post:', error)
+    .catch((e) => {
+      console.error('Error updating post:', e)
     })
 }
 </script>
