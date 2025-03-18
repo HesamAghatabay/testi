@@ -8,6 +8,7 @@ const routes = [
       { path: 'Login', component: () => import('pages/LoginPage.vue') },
       { path: 'posts', component: () => import('pages/PostPage.vue') },
       { path: 'profile', component: () => import('pages/ProfilePage.vue') },
+      { path: 'createposts', component: () => import('pages/CreatePostPage.vue') },
     ],
   },
 
