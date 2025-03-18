@@ -5,8 +5,6 @@
     <div v-if="me">
       <!-- <p>{{ me.profile.name }}</p> -->
       <p>{{ me.name }}</p>
-      <!-- <p>{{ me.profile.address }}</p> -->
-      <!-- <p>{{ me.profile.phone_number }}</p> -->
     </div>
   </q-page>
 </template>
