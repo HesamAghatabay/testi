@@ -38,7 +38,7 @@ class PostController extends Controller
             "title" => $request->title,
             "body" => $request->body,
             "time" => $request->time,
-            'status' => 0,
+            'satatus' => 0,
             'user_id' => Auth::user()->id
         ]);
         return response()->json([
