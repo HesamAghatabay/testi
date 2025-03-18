@@ -34,7 +34,7 @@ function fetchPostDetails() {
     .get(`/api/post/${postId}`)
     .then((r) => {
       const post = r.data
-      console.log('API Response:', r.data);
+      console.log('API Response:', r.data)
       title.value = post.title
       body.value = post.body
       status.value = post.status
@@ -46,15 +46,13 @@ function fetchPostDetails() {
 }
 function editpost() {
   const postId = route.params.id
-  const updatedPost = {
-    title: title.value,
-    body: body.value,
-    status: status.value,
-    time: time.value,
-  }
-
   api
-    .put(`/api/post/${postId}`, updatedPost)
+    .put(`/api/post/${postId}`, {
+      title: title.value,
+      body: body.value,
+      status: status.value,
+      time: time.value,
+    })
     .then((r) => {
       console.log(r)
       Notify.create({
