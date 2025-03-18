@@ -1,7 +1,7 @@
 <template>
   <q-page padding>
     <h1 class="text-h4">welcome to post page</h1>
-    <q-btn label="Create New Posts" to="/createposts" color="red-9" />
+    <q-btn label="Create New Posts" to="/createposts" color="blue-9" />
     <table>
       <tr>
         <td>ID</td>
@@ -19,7 +19,7 @@
         <td>{{ post.title }}</td>
         <td>{{ post.user_id }}</td>
         <td><q-btn label="Edit" color="yellow-8" @click="goToEditPost(post.id)" /></td>
-        <td><q-btn label="Delete" color="red-8" /></td>
+        <td><q-btn label="Delete" color="red-8" @click="deletePost(post.id)" /></td>
         <td><q-btn label="Show" color="green-8" /></td>
       </tr>
     </table>
@@ -27,6 +27,7 @@
 </template>
 
 <script setup>
+import { Notify } from 'quasar'
 import { api } from 'src/boot/axios'
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -49,5 +50,19 @@ function allpost() {
 }
 function goToEditPost(postId) {
   router.push(`/edit-posts/${postId}`)
+}
+function deletePost(postId) {
+  api
+    .delete(`/api/post/${postId}`)
+    .then((r) => {
+      Notify.create({
+        type: 'positive',
+        message: 'post deleted' + r.data,
+      })
+      router.push('posts')
+    })
+    .catch((e) => {
+      console.log(e)
+    })
 }
 </script>

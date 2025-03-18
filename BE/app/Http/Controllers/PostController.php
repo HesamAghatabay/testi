@@ -87,15 +87,23 @@ class PostController extends Controller
         ]);
         $post->update($validatepost);
         return response()->json([
-            'message' => 'post update'
-        ]);
+            'message' => 'post update',
+            'post' => $post
+        ], 200);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post $post)
+    public function destroy(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+        if (!$post) {
+            return response()->json('post not found', 404);
+        }
+        $post->delete();
+        return response()->json([
+            'message' => 'post deleted',
+        ]);
     }
 }
