@@ -13,7 +13,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $allposts = Post::orderBy("created_at","desc")->get();
+        $allposts = Post::orderBy("created_at", "desc")->get();
         return response()->json($allposts);
     }
 
@@ -51,9 +51,15 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        //
+        $post = Post::find($id);
+        if (!$post) {
+            return response()->json([
+                'message' => ' post not found'
+            ], 401);
+        }
+        return response()->json($post, 200);
     }
 
     /**

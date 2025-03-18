@@ -34,6 +34,7 @@ function fetchPostDetails() {
     .get(`/api/post/${postId}`)
     .then((r) => {
       const post = r.data
+      console.log('API Response:', r.data);
       title.value = post.title
       body.value = post.body
       status.value = post.status
