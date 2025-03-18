@@ -12,7 +12,7 @@
         <td>status</td>
       </tr>
 
-        <q-inner-loading v-if="!post" color="red-9" size="45px" />
+      <q-inner-loading v-if="!post" color="red-9" size="45px" />
 
       <tr v-for="post in posts" :key="post.id">
         <td>{{ post.id }}</td>
@@ -47,9 +47,7 @@ function allpost() {
       console.log(e)
     })
 }
-function goToEditPost(postId){
+function goToEditPost(postId) {
   router.push(`/edit-posts/${postId}`)
 }
 </script>
-
-
