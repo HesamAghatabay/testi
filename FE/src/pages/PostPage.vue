@@ -11,14 +11,14 @@
         <td>delete</td>
         <td>status</td>
       </tr>
-      <tr>
+
         <q-inner-loading v-if="!post" color="red-9" size="45px" />
-      </tr>
+
       <tr v-for="post in posts" :key="post.id">
         <td>{{ post.id }}</td>
         <td>{{ post.title }}</td>
         <td>{{ post.user_id }}</td>
-        <td><q-btn label="Edit" color="yellow-8" /></td>
+        <td><q-btn label="Edit" color="yellow-8" @click="goToEditPost(post.id)" /></td>
         <td><q-btn label="Delete" color="red-8" /></td>
         <td><q-btn label="Show" color="green-8" /></td>
       </tr>
@@ -29,6 +29,8 @@
 <script setup>
 import { api } from 'src/boot/axios'
 import { onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
 const posts = ref([])
 onMounted(() => {
@@ -45,4 +47,9 @@ function allpost() {
       console.log(e)
     })
 }
+function goToEditPost(postId){
+  router.push(`/edit-posts/${postId}`)
+}
 </script>
+
+

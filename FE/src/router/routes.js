@@ -9,6 +9,7 @@ const routes = [
       { path: 'posts', component: () => import('pages/PostPage.vue') },
       { path: 'profile', component: () => import('pages/ProfilePage.vue') },
       { path: 'createposts', component: () => import('pages/CreatePostPage.vue') },
+      { path: '/edit-posts/:id', component: () => import('pages/EditPostPage.vue') },
     ],
   },
 
