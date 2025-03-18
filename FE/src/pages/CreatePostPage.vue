@@ -1,9 +1,9 @@
 <template>
   <q-page padding>
     <h1 class="text-h4">Create Posts</h1>
-    <q-input label="title" Rounded outlined type="title" v-model="title" />
-    <q-input label="body" Rounded outlined type="body" v-model="body" />
-    <!-- <q-input label="status" Rounded outlined type="status" v-model="status" /> -->
+    <q-input label="title" Rounded outlined type="text" v-model="title" />
+    <q-input label="body" Rounded outlined type="text" v-model="body" />
+    <q-input label="status" Rounded outlined type="text" v-model="satatus" />
     <q-input label="time" Rounded outlined type="time" v-model="time" />
     <q-btn label="Create" @click="createpost" color="green-9" />
   </q-page>
@@ -17,7 +17,8 @@ import { useRouter } from 'vue-router'
 
 const title = ref('')
 const body = ref('')
-const time = ref('2019/02/01')
+const time = ref('')
+const satatus = ref('')
 const router = useRouter()
 
 function createpost() {
@@ -26,14 +27,16 @@ function createpost() {
       title: title.value,
       body: body.value,
       time: time.value,
+      satatus: satatus.value,
     })
     .then((r) => {
       Notify.create({
-        message: r.data.message
+        message: r.data.message,
       })
       router.push('/posts')
     })
     .catch((e) => {
+      console.error(e.response)
       Notify.create({
         message: e,
       })

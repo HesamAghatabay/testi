@@ -38,13 +38,13 @@ class PostController extends Controller
             "title" => $request->title,
             "body" => $request->body,
             "time" => $request->time,
-            'satatus' => 0,
-            'user_id' => Auth::user()->id
+            'satatus' => $request->satatus,
+            'user_id' => $request->user()->id,
         ]);
         return response()->json([
             'status' => 'success',
             'message' => 'post create'
-        ]);
+        ], 201);
     }
 
     /**

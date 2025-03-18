@@ -12,7 +12,7 @@ class Post extends Model
         "title",
         'body',
         'time',
-        'status',
+        'satatus',
         'user_id',
     ];
     protected $hidden = [
