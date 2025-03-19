@@ -20,7 +20,7 @@
         <td>{{ post.user_id }}</td>
         <td><q-btn label="Edit" color="yellow-8" @click="goToEditPost(post.id)" /></td>
         <td><q-btn label="Delete" color="red-8" @click="deletePost(post.id)" /></td>
-        <td><q-btn label="Show" color="green-8" /></td>
+        <td><q-btn label="Show" color="green-8" @click="showpost(post.id)" /></td>
       </tr>
     </table>
   </q-page>
@@ -64,5 +64,8 @@ function deletePost(postId) {
     .catch((e) => {
       console.log(e)
     })
+}
+function showpost(postId) {
+  router.push(`/show-posts/${postId}`)
 }
 </script>
