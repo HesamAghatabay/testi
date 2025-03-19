@@ -66,6 +66,6 @@ function deletePost(postId) {
     })
 }
 function showpost(postId) {
-  router.push(`/show-posts/${postId}`)
+  router.push(`/showposts/${postId}`)
 }
 </script>

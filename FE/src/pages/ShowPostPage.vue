@@ -1,9 +1,12 @@
 <template>
   <q-page padding>
     <h1 class="text-h4">Show Post Page</h1>
-    <q-inner-loading color="red-8" />
-    <p>{{ post.id }}</p>
-    <p>{{ post.title }}</p>
+    <q-inner-loading :showing="loading" v-if="!post" color="red-8" />
+    <div v-if="post">
+      <p>{{ post.id }}</p>
+      <p>{{ post?.id || 'شناسه در دسترس نیست' }}</p>
+      <p>{{ post.title }}</p>
+    </div>
   </q-page>
 </template>
 
@@ -15,11 +18,14 @@ import { useRoute } from 'vue-router'
 const route = useRoute()
 const post = ref(null)
 const postId = route.params.id
+const loading = ref(true)
 
 onMounted(() => {
+  loading.value = true
   api
     .get(`/api/post/${postId}`)
     .then((r) => {
+      console.log(r.data)
       post.value = r.data
     })
     .catch((e) => {
