@@ -12,7 +12,7 @@
         <td>status</td>
       </tr>
 
-      <q-inner-loading v-if="!post" color="red-9" size="45px" />
+      <q-inner-loading :showing="loading" v-if="!post" color="red-9" size="45px" />
 
       <tr v-for="post in posts" :key="post.id">
         <td>{{ post.id }}</td>
@@ -32,12 +32,14 @@ import { api } from 'src/boot/axios'
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
+// const loading = ref()
 
 const posts = ref([])
 onMounted(() => {
   allpost()
 })
 function allpost() {
+  // loading.value = true
   api
     .get('/api/post')
     .then((r) => {
