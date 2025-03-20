@@ -1,7 +1,7 @@
 <template>
   <q-page padding>
     <h1 class="text-h4">Show Post Page</h1>
-    <q-inner-loading :showing="loading" v-if="!post" size="45px" color="green-8" />
+    <q-inner-loading :showing="loading" size="75px" color="green-8" />
     <div v-if="post">
       <p>{{ post.id }}</p>
       <p>{{ post?.id || 'شناسه در دسترس نیست' }}</p>
@@ -18,7 +18,7 @@ import { useRoute } from 'vue-router'
 const route = useRoute()
 const post = ref(null)
 const postId = route.params.id
-const loading = ref()
+const loading = ref(false)
 
 onMounted(() => {
   loading.value = true
@@ -30,6 +30,8 @@ onMounted(() => {
     })
     .catch((e) => {
       console.log(e)
+    }).finally(()=>{
+      loading.value = false
     })
 })
 </script>
